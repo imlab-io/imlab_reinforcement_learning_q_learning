@@ -69,22 +69,22 @@ void update_target_position(struct game_t *game, uint32_t action)
     // convert the action to position
     if(action == 0)
     {
-        game->targetPosition[0] = max(0, game->targetPosition[0] - 1);
+        game->targetPosition[0] = maximum(0, game->targetPosition[0] - 1);
     }
     // go UP
     else if(action == 1)
     {
-        game->targetPosition[1] = max(0, game->targetPosition[1] - 1);
+        game->targetPosition[1] = maximum(0, game->targetPosition[1] - 1);
     }
     // go RIGHT
     else if (action == 2)
     {
-        game->targetPosition[0] = min(6, game->targetPosition[0] + 1);
+        game->targetPosition[0] = minimum(6, game->targetPosition[0] + 1);
     }
     // go DOWN
     else if (action == 3)
     {
-        game->targetPosition[1] = min(4, game->targetPosition[1] + 1);
+        game->targetPosition[1] = minimum(4, game->targetPosition[1] + 1);
     }
 }
 
@@ -116,7 +116,7 @@ int play_game(struct q_table_t *Q, struct game_t *game, float exploration)
 
 float get_epsilon(int t)
 {
-    return max(0.01f, min(1, 1.0f - log10((t + 1) / 2)));
+    return maximum(0.01f, minimum(1, 1.0f - log10((t + 1) / 2)));
 }
 
 // main function
